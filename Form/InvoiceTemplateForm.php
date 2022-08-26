@@ -10,16 +10,31 @@ use App\Form\InvoiceTemplateForm as CoreInvoiceTemplateForm;
 
 class InvoiceTemplateForm extends AbstractType
 {
+    /**
+     * @var CoreInvoiceTemplateForm
+     */
     private $originalForm;
 
+    /**
+     * @var SmallBusinessRuleConfiguration
+     */
     private $configuration;
 
+    /**
+     * @param CoreInvoiceTemplateForm $original
+     * @param SmallBusinessRuleConfiguration $configuration
+     */
     public function __construct(CoreInvoiceTemplateForm $original, SmallBusinessRuleConfiguration $configuration)
     {
         $this->originalForm = $original;
         $this->configuration = $configuration;
     }
 
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     * @return void
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $this->originalForm->buildForm($builder, $options);

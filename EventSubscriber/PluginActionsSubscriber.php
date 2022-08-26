@@ -10,7 +10,14 @@ use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
 final class PluginActionsSubscriber implements EventSubscriberInterface
 {
+    /**
+     * @var UrlGeneratorInterface
+     */
     private $router;
+
+    /**
+     * @var AuthorizationCheckerInterface
+     */
     private $security;
 
     /**

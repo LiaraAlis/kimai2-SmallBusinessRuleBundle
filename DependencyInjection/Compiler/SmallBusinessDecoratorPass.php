@@ -39,6 +39,7 @@ class SmallBusinessDecoratorPass implements CompilerPassInterface
     /**
      * Generate a snake_case service name from the service class name
      *
+     * @param $serviceName
      * @return string
      */
     private function generateAliasName($serviceName): string
