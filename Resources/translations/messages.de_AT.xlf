@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="de-AT" datatype="plaintext" original="messages.en.xlf">
+    <body>
+      <trans-unit id="J1IjZoS" resname="invoice.small_business_rule">
+        <source>invoice.small_business_rule</source>
+        <target>Der Rechnungsbetrag enthält gem. § 6 Abs. 1 Z 27 UStG 1994 keine Umsatzsteuer.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

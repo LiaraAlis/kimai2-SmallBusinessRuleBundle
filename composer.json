@@ -1,0 +1,25 @@
+{
+    "name": "liaraalis/kimai2-small-business-rule-plugin",
+    "description": "Kimai2 bundle which adds a function for small business regulation as it is possible in Germany and Austria.",
+    "homepage": "https://www.kimai.org",
+    "type": "kimai-plugin",
+    "version": "dev-1.0",
+    "require": {
+        "kimai/kimai2-composer": "*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Alexander Pankow",
+            "email": "apankow@alexander-pankow.de",
+            "homepage": "https://alexander-pankow.de"
+        }
+    ],
+    "extra": {
+        "kimai": {
+            "require": "1.22.1",
+            "version": "dev-1.0",
+            "name": "SmallBusinessRuleBundle"
+        }
+    }
+}

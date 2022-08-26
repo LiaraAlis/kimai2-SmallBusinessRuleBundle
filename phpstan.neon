@@ -1,0 +1,10 @@
+includes:
+    - %rootDir%/../phpstan-symfony/extension.neon
+    - %rootDir%/../phpstan-symfony/rules.neon
+
+parameters:
+    treatPhpDocTypesAsCertain: false
+    inferPrivatePropertyTypeFromConstructor: true
+    excludePaths:
+        - vendor/
+    checkMissingIterableValueType: false

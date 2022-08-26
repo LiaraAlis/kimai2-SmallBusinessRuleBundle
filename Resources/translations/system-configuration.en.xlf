@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="en" datatype="plaintext" original="system-configuration.en.xlf">
+    <body>
+      <trans-unit id="j2ZDhUr" resname="small_business_rule">
+        <source>small_business_rule</source>
+        <target>Small business regulation</target>
+      </trans-unit>
+      <trans-unit id="nEIcqgs" resname="label.small_business_rule.enable">
+        <source>label.small_business_rule.enable</source>
+        <target>Activate the small business regulation (possible in Germany and Austria)</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

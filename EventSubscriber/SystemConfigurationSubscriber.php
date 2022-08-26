@@ -1,0 +1,41 @@
+<?php
+
+namespace KimaiPlugin\SmallBusinessRuleBundle\EventSubscriber;
+
+use App\Event\SystemConfigurationEvent;
+use App\Form\Model\Configuration;
+use App\Form\Model\SystemConfiguration as SystemConfigurationModel;
+use App\Form\Type\YesNoType;
+use Symfony\Component\EventDispatcher\EventSubscriberInterface;
+
+class SystemConfigurationSubscriber implements EventSubscriberInterface
+{
+    /**
+     * @return array[]
+     */
+    public static function getSubscribedEvents()
+    {
+        return [
+            SystemConfigurationEvent::class => ['onSystemConfiguration', 100],
+        ];
+    }
+
+    /**
+     * @param SystemConfigurationEvent $event
+     * @return void
+     */
+    public function onSystemConfiguration(SystemConfigurationEvent $event)
+    {
+        $event->addConfiguration((new SystemConfigurationModel())
+            ->setSection('small_business_rule')
+            ->setConfiguration([
+                (new Configuration())
+                    ->setName('small_business_rule.enable')
+                    ->setLabel('small_business_rule.enable')
+                    ->setRequired(false)
+                    ->setType(YesNoType::class)
+                    ->setTranslationDomain('system-configuration'),
+            ])
+        );
+    }
+}
