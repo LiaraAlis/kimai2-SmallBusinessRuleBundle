@@ -59,10 +59,6 @@ final class PluginActionsSubscriber implements EventSubscriberInterface
             return;
         }
 
-        if (!$this->security->isGranted('demo')) {
-            return;
-        }
-
         $payload['actions']['divider'] = null;
 
         $payload['actions']['settings'] = [
