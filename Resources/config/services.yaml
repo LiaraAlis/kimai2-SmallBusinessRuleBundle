@@ -9,8 +9,8 @@ services:
         resource: '../../*'
         exclude: '../../{Resources}'
 
-    KimaiPlugin\SmallBusinessRuleBundle\Form\InvoiceTemplateForm:
-        decorates: App\Form\InvoiceTemplateForm
+    KimaiPlugin\SmallBusinessRuleBundle\Form\Extension\InvoiceTemplateFormExtension:
+        tags: ['form.type_extension']
 
     KimaiPlugin\SmallBusinessRuleBundle\Invoice\Calculator\SmallBusinessCalculator:
         autoconfigure: false

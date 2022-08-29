@@ -1,33 +1,34 @@
 <?php
 
-namespace KimaiPlugin\SmallBusinessRuleBundle\Form;
+namespace KimaiPlugin\SmallBusinessRuleBundle\Form\Extension;
 
 use App\Entity\InvoiceTemplate;
+use App\Form\InvoiceTemplateForm;
 use KimaiPlugin\SmallBusinessRuleBundle\Configuration\SmallBusinessRuleConfiguration;
-use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\AbstractTypeExtension;
 use Symfony\Component\Form\FormBuilderInterface;
-use App\Form\InvoiceTemplateForm as CoreInvoiceTemplateForm;
 
-class InvoiceTemplateForm extends AbstractType
+class InvoiceTemplateFormExtension extends AbstractTypeExtension
 {
-    /**
-     * @var CoreInvoiceTemplateForm
-     */
-    private $originalForm;
-
     /**
      * @var SmallBusinessRuleConfiguration
      */
     private $configuration;
 
     /**
-     * @param CoreInvoiceTemplateForm $original
      * @param SmallBusinessRuleConfiguration $configuration
      */
-    public function __construct(CoreInvoiceTemplateForm $original, SmallBusinessRuleConfiguration $configuration)
+    public function __construct(SmallBusinessRuleConfiguration $configuration)
     {
-        $this->originalForm = $original;
         $this->configuration = $configuration;
+    }
+
+    /**
+     * @return iterable
+     */
+    public static function getExtendedTypes(): iterable
+    {
+        return [InvoiceTemplateForm::class];
     }
 
     /**
@@ -35,10 +36,8 @@ class InvoiceTemplateForm extends AbstractType
      * @param array $options
      * @return void
      */
-    public function buildForm(FormBuilderInterface $builder, array $options)
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
-        $this->originalForm->buildForm($builder, $options);
-
         if (!$this->configuration->isSmallBusinessRule()) {
             return;
         }
