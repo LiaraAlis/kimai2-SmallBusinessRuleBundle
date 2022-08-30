@@ -19,7 +19,7 @@ First clone this repository to your Kimai installation `plugins` directory:
 
 ```bash
 cd var/plugins/
-git clone https://github.com/LiaraAlis/kimai2-SmallBusinessRuleBundle.git
+git clone https://github.com/LiaraAlis/kimai2-SmallBusinessRuleBundle.git SmallBusinessRuleBundle
 ```
 
 Now you need to rebuild the cache and you're ready to go!
