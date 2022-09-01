@@ -12,7 +12,7 @@ This plugin is compatible with the following Kimai releases:
 
 | Bundle version   | Minimum Kimai version |
 |------------------|-----------------------|
-| 1.0              | 1.22                  |
+| 1.0              | 1.23.1                |
 
 ## Installation
 First clone this repository to your Kimai installation `plugins` directory:
