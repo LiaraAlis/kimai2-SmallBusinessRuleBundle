@@ -22,22 +22,10 @@ cd var/plugins/
 git clone https://github.com/LiaraAlis/kimai2-SmallBusinessRuleBundle.git SmallBusinessRuleBundle
 ```
 
-Now you need to rebuild the cache and you're ready to go!
+Now you need to rebuild the cache, and you're ready to go!
 
 ```bash
 bin/console kimai:reload --env=prod
 ```
 
 To enable the small business regulation, go to the system settings and enable the checkbox in section `Small business rule`. From now on, small business regulation is applied on all your invoices.
-
-
-## Important notes
-### Own invoice templates
-When using your own invoice template, you need to add the note manually. You can use the following snippet:
-```html
-{% if config('small_business_rule.enable') %}
-<div class="small-business-rule-note">
-    <p>{{ 'invoice.small_business_rule'|trans }}</p>
-</div>
-{% endif %}
-```
