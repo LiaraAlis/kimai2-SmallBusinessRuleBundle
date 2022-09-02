@@ -6,9 +6,8 @@ use App\Plugin\AbstractPluginExtension;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
-use Symfony\Component\DependencyInjection\Extension\PrependExtensionInterface;
 
-class SmallBusinessRuleExtension extends AbstractPluginExtension implements PrependExtensionInterface
+class SmallBusinessRuleExtension extends AbstractPluginExtension
 {
     /**
      * @param array $configs
@@ -28,21 +27,5 @@ class SmallBusinessRuleExtension extends AbstractPluginExtension implements Prep
         );
 
         $loader->load('services.yaml');
-    }
-
-    /**
-     * @param ContainerBuilder $container
-     * @return void
-     */
-    public function prepend(ContainerBuilder $container): void
-    {
-        // Add new directory for invoice templates
-        $container->prependExtensionConfig('kimai', [
-            'invoice' => [
-                'documents' => [
-                    'var/plugins/SmallBusinessRuleBundle/Resources/views/invoices/'
-                ],
-            ],
-        ]);
     }
 }
