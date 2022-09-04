@@ -10,21 +10,12 @@ use Symfony\Component\Form\FormBuilderInterface;
 
 class InvoiceTemplateFormExtension extends AbstractTypeExtension
 {
-    /**
-     * @var SmallBusinessRuleConfiguration
-     */
-    private $configuration;
-
-    /**
-     * @param SmallBusinessRuleConfiguration $configuration
-     */
-    public function __construct(SmallBusinessRuleConfiguration $configuration)
+    public function __construct(private SmallBusinessRuleConfiguration $configuration)
     {
-        $this->configuration = $configuration;
     }
 
     /**
-     * @return iterable
+     * @return iterable<string>
      */
     public static function getExtendedTypes(): iterable
     {

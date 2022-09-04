@@ -13,18 +13,14 @@ class SystemConfigurationSubscriber implements EventSubscriberInterface
     /**
      * @return array[]
      */
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             SystemConfigurationEvent::class => ['onSystemConfiguration', 100],
         ];
     }
 
-    /**
-     * @param SystemConfigurationEvent $event
-     * @return void
-     */
-    public function onSystemConfiguration(SystemConfigurationEvent $event)
+    public function onSystemConfiguration(SystemConfigurationEvent $event): void
     {
         foreach ($event->getConfigurations() as $configuration) {
             if ($configuration->getSection() !== 'invoice') {
@@ -32,8 +28,7 @@ class SystemConfigurationSubscriber implements EventSubscriberInterface
             }
 
             $configuration->addConfiguration(
-                (new Configuration())
-                    ->setName('small_business_rule.enable')
+                (new Configuration('small_business_rule.enable'))
                     ->setLabel('small_business_rule.enable')
                     ->setRequired(false)
                     ->setType(YesNoType::class)
