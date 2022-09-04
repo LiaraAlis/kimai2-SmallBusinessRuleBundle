@@ -12,7 +12,7 @@ This plugin is compatible with the following Kimai releases:
 
 | Bundle version   | Minimum Kimai version |
 |------------------|-----------------------|
-| 1.0              | 1.23.1                |
+| 1.0              | 1.24                  |
 
 ## Installation
 First clone this repository to your Kimai installation `plugins` directory:
@@ -28,4 +28,4 @@ Now you need to rebuild the cache, and you're ready to go!
 bin/console kimai:reload --env=prod
 ```
 
-To enable the small business regulation, go to the system settings and enable the checkbox in section `Small business rule`. From now on, small business regulation is applied on all your invoices.
+To enable the small business regulation, go to the system settings and enable the checkbox in section `Invoices`. From now on, small business regulation is applied on all your invoices.
