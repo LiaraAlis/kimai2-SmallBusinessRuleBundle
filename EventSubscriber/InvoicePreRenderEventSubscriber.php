@@ -52,7 +52,8 @@ class InvoicePreRenderEventSubscriber implements EventSubscriberInterface
     private function setModelPaymentTerms(InvoiceModel $model): void
     {
         $terms = $model->getTemplate()->getPaymentTerms();
-        $text = $this->translator->trans('invoice.small_business_rule');
+        $language = $model->getTemplate()->getLanguage();
+        $text = $this->translator->trans('invoice.small_business_rule', [], 'messages', $language);
 
         if (strpos($terms, $text) !== false) {
             return;
