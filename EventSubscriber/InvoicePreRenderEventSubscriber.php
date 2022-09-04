@@ -9,13 +9,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 
 class InvoicePreRenderEventSubscriber implements EventSubscriberInterface
 {
-    private $smallBusinessRuleConfiguration;
-    private $translator;
-
-    public function __construct(SmallBusinessRuleConfiguration $smallBusinessRuleConfiguration, TranslatorInterface $translator)
+    public function __construct(private SmallBusinessRuleConfiguration $smallBusinessRuleConfiguration, private TranslatorInterface $translator)
     {
-        $this->smallBusinessRuleConfiguration = $smallBusinessRuleConfiguration;
-        $this->translator = $translator;
     }
 
     public static function getSubscribedEvents(): array
