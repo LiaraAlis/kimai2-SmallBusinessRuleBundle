@@ -3,13 +3,20 @@
 namespace KimaiPlugin\SmallBusinessRuleBundle\EventSubscriber;
 
 use App\Event\InvoicePreRenderEvent;
+use App\Invoice\InvoiceModel;
 use KimaiPlugin\SmallBusinessRuleBundle\Configuration\SmallBusinessRuleConfiguration;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 class InvoicePreRenderEventSubscriber implements EventSubscriberInterface
 {
+    /**
+     * @var SmallBusinessRuleConfiguration
+     */
     private $smallBusinessRuleConfiguration;
+    /**
+     * @var TranslatorInterface
+     */
     private $translator;
 
     public function __construct(SmallBusinessRuleConfiguration $smallBusinessRuleConfiguration, TranslatorInterface $translator)
@@ -25,13 +32,26 @@ class InvoicePreRenderEventSubscriber implements EventSubscriberInterface
         ];
     }
 
-    public function onInvoicePreRenderEvent(InvoicePreRenderEvent $event)
+    public function onInvoicePreRenderEvent(InvoicePreRenderEvent $event): void
     {
         if (!$this->smallBusinessRuleConfiguration->isSmallBusinessRule()) {
             return;
         }
 
-        $terms = $event->getModel()->getTemplate()->getPaymentTerms();
+        $model = $event->getModel();
+        $this->setModelPaymentTerms($model);
+        $model->setHideZeroTax(true);
+    }
+
+    /**
+     * Adds a note about the small business rule to the model payment terms.
+     *
+     * @param InvoiceModel $model
+     * @return void
+     */
+    private function setModelPaymentTerms(InvoiceModel $model): void
+    {
+        $terms = $model->getTemplate()->getPaymentTerms();
         $text = $this->translator->trans('invoice.small_business_rule');
 
         if (strpos($terms, $text) !== false) {
@@ -39,6 +59,6 @@ class InvoicePreRenderEventSubscriber implements EventSubscriberInterface
         }
 
         $terms = $text . PHP_EOL . PHP_EOL . $terms;
-        $event->getModel()->getTemplate()->setPaymentTerms($terms);
+        $model->getTemplate()->setPaymentTerms($terms);
     }
 }
