@@ -1,5 +1,5 @@
-# Small business regulation bundle for Kimai 2
-This Kimai 2 plugin provides a function that makes it easy to use the small business regulation as it can be used in Germany and Austria.
+# Small business regulation bundle for Kimai
+This Kimai plugin provides a function that makes it easy to use the small business regulation as it can be used in Germany and Austria.
 
 ## Features
 * Adds a setting to enable the small business regulation globally.
