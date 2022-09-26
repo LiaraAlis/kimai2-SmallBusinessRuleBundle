@@ -2,11 +2,12 @@
 
 namespace KimaiPlugin\SmallBusinessRuleBundle\Invoice\Calculator;
 
+use App\Invoice\Calculator\AbstractCalculator;
 use App\Invoice\CalculatorInterface;
 use App\Invoice\InvoiceModel;
 use KimaiPlugin\SmallBusinessRuleBundle\Configuration\SmallBusinessRuleConfiguration;
 
-class SmallBusinessCalculator implements CalculatorInterface
+class SmallBusinessCalculator extends AbstractCalculator implements CalculatorInterface
 {
     /**
      * @var CalculatorInterface
@@ -29,6 +30,17 @@ class SmallBusinessCalculator implements CalculatorInterface
     }
 
     /**
+     * @param InvoiceModel $model
+     * @return void
+     */
+    public function setModel(InvoiceModel $model): void
+    {
+        parent::setModel($model);
+
+        $this->coreCalculator->setModel($model);
+    }
+
+    /**
      * @return float|null
      */
     public function getVat(): ?float
@@ -38,31 +50,6 @@ class SmallBusinessCalculator implements CalculatorInterface
         }
 
         return $this->coreCalculator->getVat();
-    }
-
-    /**
-     * @return \App\Invoice\InvoiceItem[]
-     */
-    public function getEntries(): array
-    {
-        return $this->coreCalculator->getEntries();
-    }
-
-    /**
-     * @param InvoiceModel $model
-     * @return void
-     */
-    public function setModel(InvoiceModel $model): void
-    {
-        $this->coreCalculator->setModel($model);
-    }
-
-    /**
-     * @return float
-     */
-    public function getSubtotal(): float
-    {
-        return $this->coreCalculator->getSubtotal();
     }
 
     /**
@@ -78,27 +65,11 @@ class SmallBusinessCalculator implements CalculatorInterface
     }
 
     /**
-     * @return float
+     * @return \App\Invoice\InvoiceItem[]
      */
-    public function getTotal(): float
+    public function getEntries(): array
     {
-        return $this->coreCalculator->getTotal();
-    }
-
-    /**
-     * @return string
-     */
-    public function getCurrency(): string
-    {
-        return $this->coreCalculator->getCurrency();
-    }
-
-    /**
-     * @return int
-     */
-    public function getTimeWorked(): int
-    {
-        return $this->coreCalculator->getTimeWorked();
+        return $this->coreCalculator->getEntries();
     }
 
     /**
