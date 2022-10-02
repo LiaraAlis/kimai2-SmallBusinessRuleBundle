@@ -4,7 +4,6 @@ namespace KimaiPlugin\SmallBusinessRuleBundle\Invoice\Calculator;
 
 use App\Invoice\Calculator\AbstractCalculator;
 use App\Invoice\CalculatorInterface;
-use App\Invoice\InvoiceModel;
 use KimaiPlugin\SmallBusinessRuleBundle\Configuration\SmallBusinessRuleConfiguration;
 
 class SmallBusinessCalculator extends AbstractCalculator implements CalculatorInterface
@@ -27,17 +26,6 @@ class SmallBusinessCalculator extends AbstractCalculator implements CalculatorIn
     {
         $this->coreCalculator = $coreCalculator;
         $this->configuration = $configuration;
-    }
-
-    /**
-     * @param InvoiceModel $model
-     * @return void
-     */
-    public function setModel(InvoiceModel $model): void
-    {
-        parent::setModel($model);
-
-        $this->coreCalculator->setModel($model);
     }
 
     /**
@@ -69,6 +57,7 @@ class SmallBusinessCalculator extends AbstractCalculator implements CalculatorIn
      */
     public function getEntries(): array
     {
+        $this->coreCalculator->setModel($this->model);
         return $this->coreCalculator->getEntries();
     }
 
