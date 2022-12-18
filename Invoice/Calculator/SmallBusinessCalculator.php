@@ -54,11 +54,6 @@ class SmallBusinessCalculator implements CalculatorInterface
         return $this->coreCalculator->getTotal();
     }
 
-    public function getCurrency(): string
-    {
-        return $this->coreCalculator->getCurrency();
-    }
-
     public function getTimeWorked(): int
     {
         return $this->coreCalculator->getTimeWorked();
