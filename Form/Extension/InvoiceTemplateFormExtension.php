@@ -13,7 +13,7 @@ class InvoiceTemplateFormExtension extends AbstractTypeExtension
     /**
      * @var SmallBusinessRuleConfiguration
      */
-    private $configuration;
+    private SmallBusinessRuleConfiguration $configuration;
 
     /**
      * @param SmallBusinessRuleConfiguration $configuration

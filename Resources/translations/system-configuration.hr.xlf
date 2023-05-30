@@ -6,8 +6,8 @@
         <source>small_business_rule</source>
         <target>Propisi za mala poduzeća</target>
       </trans-unit>
-      <trans-unit id="nEIcqgs" resname="label.small_business_rule.enable">
-        <source>label.small_business_rule.enable</source>
+      <trans-unit id="nEIcqgs" resname="small_business_rule.enable">
+        <source>small_business_rule.enable</source>
         <target>Aktiviraj propis za mala poduzeća (moguće u Njemačkoj i Austriji)</target>
       </trans-unit>
     </body>

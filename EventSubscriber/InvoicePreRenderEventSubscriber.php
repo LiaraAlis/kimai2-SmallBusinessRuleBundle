@@ -13,11 +13,11 @@ class InvoicePreRenderEventSubscriber implements EventSubscriberInterface
     /**
      * @var SmallBusinessRuleConfiguration
      */
-    private $smallBusinessRuleConfiguration;
+    private SmallBusinessRuleConfiguration $smallBusinessRuleConfiguration;
     /**
      * @var TranslatorInterface
      */
-    private $translator;
+    private TranslatorInterface $translator;
 
     public function __construct(SmallBusinessRuleConfiguration $smallBusinessRuleConfiguration, TranslatorInterface $translator)
     {

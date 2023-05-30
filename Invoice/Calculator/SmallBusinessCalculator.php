@@ -11,12 +11,12 @@ class SmallBusinessCalculator extends AbstractCalculator implements CalculatorIn
     /**
      * @var CalculatorInterface
      */
-    private $coreCalculator;
+    private CalculatorInterface $coreCalculator;
 
     /**
      * @var SmallBusinessRuleConfiguration
      */
-    private $configuration;
+    private SmallBusinessRuleConfiguration $configuration;
 
     /**
      * @param CalculatorInterface $coreCalculator
@@ -29,9 +29,9 @@ class SmallBusinessCalculator extends AbstractCalculator implements CalculatorIn
     }
 
     /**
-     * @return float|null
+     * @return float
      */
-    public function getVat(): ?float
+    public function getVat(): float
     {
         if ($this->configuration->isSmallBusinessRule()) {
             return 0.00;

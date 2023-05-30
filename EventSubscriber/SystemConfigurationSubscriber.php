@@ -4,7 +4,6 @@ namespace KimaiPlugin\SmallBusinessRuleBundle\EventSubscriber;
 
 use App\Event\SystemConfigurationEvent;
 use App\Form\Model\Configuration;
-use App\Form\Model\SystemConfiguration as SystemConfigurationModel;
 use App\Form\Type\YesNoType;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 
@@ -32,8 +31,7 @@ class SystemConfigurationSubscriber implements EventSubscriberInterface
             }
 
             $configuration->addConfiguration(
-                (new Configuration())
-                    ->setName('small_business_rule.enable')
+                (new Configuration('small_business_rule.enable'))
                     ->setLabel('small_business_rule.enable')
                     ->setRequired(false)
                     ->setType(YesNoType::class)
