@@ -11,8 +11,9 @@ This Kimai plugin provides a function that makes it easy to use the small busine
 This plugin is compatible with the following Kimai releases:
 
 | Bundle version   | Minimum Kimai version |
-|------------------|-----------------------|
-| 1.0              | 1.24                  |
+|------------------|---------------------|
+| 1.0              | 1.24                |
+| 2.0              | 2.0                 |
 
 ## Installation
 First clone this repository to your Kimai installation `plugins` directory:
