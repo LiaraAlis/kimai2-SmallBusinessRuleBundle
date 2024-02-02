@@ -10,10 +10,11 @@ This Kimai plugin provides a function that makes it easy to use the small busine
 ## Requirements
 This plugin is compatible with the following Kimai releases:
 
-| Bundle version   | Minimum Kimai version |
-|------------------|---------------------|
-| 1.0              | 1.24                |
-| 2.0              | 2.0                 |
+| Bundle version | Minimum Kimai version |
+|----------------|-----------------------|
+| 1.0            | 1.24                  |
+| 2.0            | 2.0                   |
+| 2.1.0          | 2.7                   |
 
 ## Installation
 First clone this repository to your Kimai installation `plugins` directory:

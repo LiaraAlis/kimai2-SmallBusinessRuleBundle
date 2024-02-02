@@ -2,7 +2,7 @@
 
 namespace KimaiPlugin\SmallBusinessRuleBundle\DependencyInjection\Compiler;
 
-use App\Kernel;
+use App\Invoice\CalculatorInterface;
 use KimaiPlugin\SmallBusinessRuleBundle\Invoice\Calculator\SmallBusinessCalculator;
 use Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
@@ -19,7 +19,7 @@ class SmallBusinessDecoratorPass implements CompilerPassInterface
             return;
         }
 
-        $taggedServices = $container->findTaggedServiceIds(Kernel::TAG_INVOICE_CALCULATOR);
+        $taggedServices = $container->findTaggedServiceIds(CalculatorInterface::class);
 
         foreach ($taggedServices as $id => $tags) {
             if ($id === SmallBusinessCalculator::class) {

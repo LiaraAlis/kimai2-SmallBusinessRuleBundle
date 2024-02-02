@@ -1,4 +1,8 @@
 # Changelog
+## 2.1.0
+Compatible with Kimai v2.7.0
+- Fixes #10 which occurs starting with Kimai 2.7.0
+
 ## 2.0.1
 Compatible with Kimai v2.0
 - Added dutch translation
