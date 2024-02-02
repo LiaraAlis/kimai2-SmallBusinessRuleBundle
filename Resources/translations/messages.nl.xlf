@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="nl" datatype="plaintext" original="messages.nl.xlf">
+    <body>
+      <trans-unit id="J1IjZoS" resname="invoice.small_business_rule">
+        <source>invoice.small_business_rule</source>
+        <target>Factuur vrijgesteld van omzetbelasting op grond van artikel 25 uit de Wet op de omzetbelasting.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

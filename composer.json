@@ -3,7 +3,7 @@
     "description": "Kimai2 bundle which adds a function for small business regulation as it is possible in Germany and Austria.",
     "homepage": "https://www.kimai.org",
     "type": "kimai-plugin",
-    "version": "2.0.0",
+    "version": "2.0.1",
     "require": {
         "kimai/kimai2-composer": "*"
     },

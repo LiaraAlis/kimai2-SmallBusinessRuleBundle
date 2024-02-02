@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" target-language="nl" datatype="plaintext" original="system-configuration.nl.xlf">
+    <body>
+      <trans-unit id="j2ZDhUr" resname="small_business_rule">
+        <source>small_business_rule</source>
+        <target>Kleineondernemersregeling (KOR)</target>
+      </trans-unit>
+      <trans-unit id="nEIcqgs" resname="small_business_rule.enable">
+        <source>small_business_rule.enable</source>
+        <target>Activeer de Kleineondernemersregeling (KOR)</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
