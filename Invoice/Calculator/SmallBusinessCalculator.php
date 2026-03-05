@@ -4,28 +4,26 @@ namespace KimaiPlugin\SmallBusinessRuleBundle\Invoice\Calculator;
 
 use App\Invoice\Calculator\AbstractCalculator;
 use App\Invoice\CalculatorInterface;
+use App\Invoice\TaxRow;
 use KimaiPlugin\SmallBusinessRuleBundle\Configuration\SmallBusinessRuleConfiguration;
 
 class SmallBusinessCalculator extends AbstractCalculator implements CalculatorInterface
 {
-    /**
-     * @var CalculatorInterface
-     */
-    private CalculatorInterface $coreCalculator;
 
     /**
-     * @var SmallBusinessRuleConfiguration
+     * @var array
      */
-    private SmallBusinessRuleConfiguration $configuration;
+    private array $cached = [];
 
     /**
      * @param CalculatorInterface $coreCalculator
      * @param SmallBusinessRuleConfiguration $configuration
      */
-    public function __construct(CalculatorInterface $coreCalculator, SmallBusinessRuleConfiguration $configuration)
+    public function __construct(
+        private readonly CalculatorInterface $coreCalculator,
+        private readonly SmallBusinessRuleConfiguration $configuration
+    )
     {
-        $this->coreCalculator = $coreCalculator;
-        $this->configuration = $configuration;
     }
 
     /**
@@ -38,6 +36,14 @@ class SmallBusinessCalculator extends AbstractCalculator implements CalculatorIn
         }
 
         return $this->coreCalculator->getVat();
+    }
+
+    /**
+     * @return array|TaxRow[]
+     */
+    public function getTaxRows(): array
+    {
+        return [];
     }
 
     /**
@@ -58,7 +64,16 @@ class SmallBusinessCalculator extends AbstractCalculator implements CalculatorIn
     public function getEntries(): array
     {
         $this->coreCalculator->setModel($this->model);
-        return $this->coreCalculator->getEntries();
+        return $this->calculateEntries();
+    }
+
+    protected function calculateEntries(): array
+    {
+        if (\count($this->cached) === 0) {
+            $this->cached = $this->coreCalculator->calculateEntries();
+        }
+
+        return $this->cached;
     }
 
     /**

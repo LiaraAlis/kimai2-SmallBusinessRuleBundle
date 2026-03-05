@@ -2,6 +2,8 @@
 
 namespace KimaiPlugin\SmallBusinessRuleBundle\EventSubscriber;
 
+use App\Entity\Tax;
+use App\Entity\TaxType;
 use App\Event\InvoicePreRenderEvent;
 use App\Invoice\InvoiceModel;
 use KimaiPlugin\SmallBusinessRuleBundle\Configuration\SmallBusinessRuleConfiguration;
@@ -28,7 +30,7 @@ class InvoicePreRenderEventSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents(): array
     {
         return [
-            InvoicePreRenderEvent::class => ['onInvoicePreRenderEvent', 100],
+            InvoicePreRenderEvent::class => ['onInvoicePreRenderEvent', -100],
         ];
     }
 
@@ -41,6 +43,7 @@ class InvoicePreRenderEventSubscriber implements EventSubscriberInterface
         $model = $event->getModel();
         $this->setModelPaymentTerms($model);
         $model->setHideZeroTax(true);
+        $model->getTemplate()->setTaxRates([$this->getDummyTaxRate()]);
     }
 
     /**
@@ -61,5 +64,19 @@ class InvoicePreRenderEventSubscriber implements EventSubscriberInterface
 
         $terms = $text . PHP_EOL . PHP_EOL . $terms;
         $model->getTemplate()->setPaymentTerms($terms);
+    }
+
+    /**
+     * @return Tax
+     */
+    private function getDummyTaxRate(): Tax
+    {
+        return new Tax(
+            TaxType::STANDARD,
+            0.00,
+            'vat',
+            false,
+            'invoice.small_business_rule'
+        );
     }
 }
