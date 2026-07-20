@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Lint (PHP ${{ matrix.php }})
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        # Kimai 2.x requires PHP >= 8.2
+        php: [ '8.2', '8.3', '8.4' ]
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: none
+          tools: composer:v2
+
+      # Not --strict: Kimai plugins intentionally keep the `version` field
+      # (it is read by Kimai itself) and require kimai/kimai2-composer as "*".
+      - name: Validate composer.json
+        run: composer validate --no-check-lock --no-check-publish
+
+      - name: PHP syntax check
+        run: find . -path ./vendor -prune -o -name '*.php' -print0 | xargs -0 -n1 -P4 php -l
+
+      - name: Translation catalogues are well-formed XML
+        run: |
+          for file in Resources/translations/*.xlf; do
+            echo "Checking $file"
+            xmllint --noout "$file"
+          done
