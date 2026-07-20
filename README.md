@@ -20,8 +20,14 @@ This plugin is compatible with the following Kimai releases:
 > **Upgrading from 2.1.0:** Kimai 2.41 changed how invoice templates handle VAT,
 > which stopped this plugin from hiding the tax row. Kimai 2.45 added a public
 > API for plugin-provided tax rates, which version 2.2.0 uses. If you run
-> Kimai 2.41 or newer, upgrade the plugin — otherwise your invoices may still
-> show a VAT row.
+> Kimai 2.41 or newer, upgrade the plugin — otherwise your invoices still show a
+> `VAT (0%)` row, which is wrong under the small business regulation: no VAT is
+> levied at all, rather than VAT being charged at a rate of zero.
+>
+> Note that Kimai stores the rendered invoice documents in `var/data/invoices/`
+> and does not re-render them later. Invoices created while running Kimai 2.41+
+> together with plugin 2.1.0 keep the incorrect tax row. Check whether any of
+> your archived invoices are affected and re-issue them if required.
 
 ## Installation
 First clone this repository to your Kimai installation `plugins` directory:
